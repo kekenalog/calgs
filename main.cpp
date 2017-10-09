@@ -2,23 +2,10 @@
 //#include <algorithm>
 #include "Student.h"
 #include "SortTestHelper.h"
+#include "SelectionSort.h"
+#include "InsertionSort.h"
 
 using namespace std;
-
-
-template<typename T>
-void selectionSort(T arr[], int n) {
-
-    for (int i = 0; i < n; i++) {
-        int minIndex = i;
-        for (int j = i + 1; j < n; j++) {
-            if (arr[j] < arr[minIndex]) {
-                minIndex = j;
-            }
-        }
-        swap(arr[i], arr[minIndex]);
-    }
-}
 
 
 int main() {
@@ -26,10 +13,17 @@ int main() {
     //测试排序算法辅助函数
     int n = 20000;
 
-    int *arr = SortTestHelper::generateRandomArray(n, 0, 100000);
-    selectionSort(arr, n);
-    SortTestHelper::testSort("Selection Sort", selectionSort, arr, n);
-    delete arr;
+    cout << "Test for random array, size = " << n << ", random range [0, " << n << "]" << endl;
+    int *arr1 = SortTestHelper::generateRandomArray(n, 0, n);
+    int *arr2 = SortTestHelper::copyIntArray(arr1, n);
+
+    SortTestHelper::testSort("Insertion Sort", insertionSort, arr1, n);
+    SortTestHelper::testSort("Selection Sort", selectionSort, arr2, n);
+
+    delete[] arr1;
+    delete[] arr2;
+
+    cout << endl;
 
     return 0;
 
