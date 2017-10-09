@@ -24,11 +24,11 @@ void selectionSort(T arr[], int n) {
 int main() {
 
     //测试排序算法辅助函数
-    int N = 20000;
+    int n = 20000;
 
-    int *arr = SortTestHelper::generateRandomArray(N, 0, 100000);
-    selectionSort(arr, N);
-    SortTestHelper::printArray(arr, N);
+    int *arr = SortTestHelper::generateRandomArray(n, 0, 100000);
+    selectionSort(arr, n);
+    SortTestHelper::testSort("Selection Sort", selectionSort, arr, n);
     delete arr;
 
     return 0;
