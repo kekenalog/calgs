@@ -3,5 +3,5 @@ project(calgs)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp selectionSort.cpp Student.h)
+set(SOURCE_FILES main.cpp Student.h SortTestHelper.h)
 add_executable(calgs ${SOURCE_FILES})
