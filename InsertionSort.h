@@ -24,9 +24,15 @@ void insertionSort(T arr[], int n){
 //                break;
 
         // 写法2
-        for( int j = i ; j > 0 && arr[j] < arr[j-1] ; j -- )
-            swap( arr[j] , arr[j-1] );
+//        for( int j = i ; j > 0 && arr[j] < arr[j-1] ; j -- )
+//            swap( arr[j] , arr[j-1] );
 
+        // 写法3
+        T e = arr[i];
+        int j; // j保存元素e应该插入的位置
+        for (j = i; j > 0 && arr[j-1] > e; j--)
+            arr[j] = arr[j-1];
+        arr[j] = e;
     }
 
     return;

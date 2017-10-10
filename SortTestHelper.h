@@ -28,12 +28,33 @@ namespace SortTestHelper {
         return arr;
     }
 
+    // 生成一个近乎有序的数组
+    // 首先生成一个含有[0...n-1]的完全有序数组, 之后随机交换swapTimes对数据
+    // swapTimes定义了数组的无序程度:
+    // swapTimes == 0 时, 数组完全有序
+    // swapTimes 越大, 数组越趋向于无序
+    int *generateNearlyOrderedArray(int n, int swapTimes) {
+
+        int *arr = new int[n];
+        for (int i = 0; i < n; i++)
+            arr[i] = i;
+
+        srand(time(NULL));
+        for (int i = 0; i < swapTimes; i++) {
+            int posx = rand() % n;
+            int posy = rand() % n;
+            swap(arr[posx], arr[posy]);
+        }
+
+        return arr;
+    }
+
     // 拷贝整型数组a中的所有元素到一个新的数组, 并返回新的数组
-    int *copyIntArray(int a[], int n){
+    int *copyIntArray(int a[], int n) {
 
         int *arr = new int[n];
         //* 在VS中, copy函数被认为是不安全的, 请大家手动写一遍for循环:)
-        copy(a, a+n, arr);
+        copy(a, a + n, arr);
         return arr;
     }
 
@@ -47,6 +68,7 @@ namespace SortTestHelper {
         cout << endl;
         return;
     }
+
     // 判断arr数组是否有序
     template<typename T>
     bool isSorted(T arr[], int n) {
@@ -57,6 +79,7 @@ namespace SortTestHelper {
 
         return true;
     }
+
     // 测试sort排序算法排序arr数组所得到结果的正确性和算法运行时间
     // * 使用VS编码的同学, 对于函数指针的写法和调用方法可能和课程中介绍的有所不同;
     // * 并且不同版本的VS, 其具体语法可能也有差异, 这是因为VS的编译器不完全是按照C++的标准实现的;
