@@ -28,12 +28,15 @@ namespace SortAdvanceMain {
         cout << "Test for random array, size = " << n << ", random range [0, " << n << "]" << endl;
         int *arr1 = SortTestHelper::generateRandomArray(n, 0, n);
         int *arr2 = SortTestHelper::copyIntArray(arr1, n);
+        int* arr3 = SortTestHelper::copyIntArray(arr1, n);
 
         SortTestHelper::testSort("Insertion Sort", insertionSort, arr1, n);
         SortTestHelper::testSort("Merge Sort", mergeSort, arr2, n);
+        SortTestHelper::testSort("Merge Sort 2",   mergeSort2,    arr3, n);
 
         delete[] arr1;
         delete[] arr2;
+        delete[] arr3;
 
         cout << endl;
 
@@ -48,12 +51,15 @@ namespace SortAdvanceMain {
         cout << "Test for nearly ordered array, size = " << n << ", swap time = " << swapTimes << endl;
         arr1 = SortTestHelper::generateNearlyOrderedArray(n, swapTimes);
         arr2 = SortTestHelper::copyIntArray(arr1, n);
+        arr3 = SortTestHelper::copyIntArray(arr1, n);
 
         SortTestHelper::testSort("Insertion Sort", insertionSort, arr1, n);
         SortTestHelper::testSort("Merge Sort", mergeSort, arr2, n);
+        SortTestHelper::testSort("Merge Sort 2",   mergeSort2,    arr3, n);
 
         delete[] arr1;
         delete[] arr2;
+        delete[] arr3;
 
         return 0;
     }
