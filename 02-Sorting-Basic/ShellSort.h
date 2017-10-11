@@ -6,7 +6,7 @@
 #define CALGS_SHELLSORT_H
 
 #include <iostream>
-#include "SortTestHelper.h"
+#include "../SortTestHelper.h"
 #include "SelectionSort.h"
 #include "InsertionSort.h"
 #include "BubbleSort.h"
