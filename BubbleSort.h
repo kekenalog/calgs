@@ -16,7 +16,7 @@ using namespace std;
 
 // 我们的第一版bubbleSort
 template<typename T>
-void bubbleSort(T arr[], int n) {
+void bubbleSort2(T arr[], int n) {
 
     bool swapped;
 
@@ -39,7 +39,7 @@ void bubbleSort(T arr[], int n) {
 
 // 我们的第二版bubbleSort,使用newn进行优化
 template<typename T>
-void bubbleSort2(T arr[], int n) {
+void bubbleSort(T arr[], int n) {
 
     int newn; // 使用newn进行优化
 

@@ -5,6 +5,7 @@
 #include "SelectionSort.h"
 #include "InsertionSort.h"
 #include "BubbleSort.h"
+#include "ShellSort.h"
 
 using namespace std;
 
@@ -24,7 +25,7 @@ int main() {
     SortTestHelper::testSort("Selection Sort", selectionSort, arr1, n);
     SortTestHelper::testSort("Insertion Sort", insertionSort, arr2, n);
     SortTestHelper::testSort("Bubble Sort", bubbleSort, arr3, n);
-    SortTestHelper::testSort("Bubble Sort 2", bubbleSort, arr4, n);
+    SortTestHelper::testSort("Shell Sort", shellSort, arr4, n);
 
     delete[] arr1;
     delete[] arr2;
@@ -47,7 +48,7 @@ int main() {
     SortTestHelper::testSort("Selection Sort", selectionSort, arr1, n);
     SortTestHelper::testSort("Insertion Sort", insertionSort, arr2, n);
     SortTestHelper::testSort("Bubble Sort", bubbleSort, arr3, n);
-    SortTestHelper::testSort("Bubble Sort 2", bubbleSort, arr4, n);
+    SortTestHelper::testSort("Shell Sort", shellSort, arr4, n);
 
     delete[] arr1;
     delete[] arr2;
@@ -73,7 +74,7 @@ int main() {
 //    SortTestHelper::testSort("Selection Sort", selectionSort, arr1, n);
     SortTestHelper::testSort("Insertion Sort", insertionSort, arr2, n);
     SortTestHelper::testSort("Bubble Sort", bubbleSort, arr3, n);
-    SortTestHelper::testSort("Bubble Sort 2", bubbleSort, arr4, n);
+    SortTestHelper::testSort("Shell Sort", shellSort, arr4, n);
 
     delete[] arr1;
     delete[] arr2;
