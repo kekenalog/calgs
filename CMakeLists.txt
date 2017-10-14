@@ -19,5 +19,5 @@ set(SOURCE_FILES main.cpp
         03-Sorting-Advance/MergeSortO.h
         03-Sorting-Advance/QuickSort2Ways.h
         03-Sorting-Advance/QuickSort3Ways.h
-        04-Heap/MaxHeapClassBasic.h 04-Heap/HeapMain.h)
+        04-Heap/HeapMain.h 04-Heap/MaxHeap.h)
 add_executable(calgs ${SOURCE_FILES})

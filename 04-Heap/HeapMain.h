@@ -8,7 +8,7 @@
 #include <iostream>
 #include <algorithm>
 
-#include "MaxHeapClassBasic.h"
+#include "MaxHeap.h"
 
 using namespace std;
 
@@ -16,8 +16,13 @@ namespace HeapMain {
 
     int testMain() {
 
-        MaxHeap<int> maxHeap = MaxHeap<int>(100);
-        cout << maxHeap.size() << endl;
+        MaxHeap<int> maxheap = MaxHeap<int>(100);
+
+        srand(time(NULL));
+        for( int i = 0 ; i < 50 ; i ++ )
+            maxheap.insert( rand()%100 );
+
+        maxheap.testPrint();
 
         return 0;
     }
