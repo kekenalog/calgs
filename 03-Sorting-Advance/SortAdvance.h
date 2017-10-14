@@ -11,6 +11,7 @@
 #include "MergeSort.h"
 #include "MergeSortButtonUp.h"
 #include "QuickSort.h"
+#include "QuickSortThreeWays.h"
 
 using namespace std;
 
@@ -33,12 +34,14 @@ namespace SortAdvanceMain {
         int *arr3 = SortTestHelper::copyIntArray(arr1, n);
         int *arr4 = SortTestHelper::copyIntArray(arr1, n);
         int *arr5 = SortTestHelper::copyIntArray(arr1, n);
+        int *arr6 = SortTestHelper::copyIntArray(arr1, n);
 
 //        SortTestHelper::testSort("Insertion Sort", insertionSort, arr1, n);
         SortTestHelper::testSort("Merge Sort", mergeSort, arr2, n);
         SortTestHelper::testSort("Merge Sort 2", mergeSort2, arr3, n);
         SortTestHelper::testSort("Merge Sort Bottom Up", mergeSortBU, arr4, n);
         SortTestHelper::testSort("Quick Sort", quickSort, arr5, n);
+        SortTestHelper::testSort("Quick Sort Three", quickSort3Ways, arr6, n);
 
 
         delete[] arr1;
@@ -46,6 +49,7 @@ namespace SortAdvanceMain {
         delete[] arr3;
         delete[] arr4;
         delete[] arr5;
+        delete[] arr6;
 
         cout << endl;
 
@@ -63,18 +67,21 @@ namespace SortAdvanceMain {
         arr3 = SortTestHelper::copyIntArray(arr1, n);
         arr4 = SortTestHelper::copyIntArray(arr1, n);
         arr5 = SortTestHelper::copyIntArray(arr1, n);
+        arr6 = SortTestHelper::copyIntArray(arr1, n);
 
         SortTestHelper::testSort("Insertion Sort", insertionSort, arr1, n);
         SortTestHelper::testSort("Merge Sort", mergeSort, arr2, n);
         SortTestHelper::testSort("Merge Sort 2", mergeSort2, arr3, n);
         SortTestHelper::testSort("Merge Sort Bottom Up", mergeSortBU, arr4, n);
         SortTestHelper::testSort("Quick Sort", quickSort, arr5, n);
+        SortTestHelper::testSort("Quick Sort Three", quickSort3Ways, arr6, n);
 
         delete[] arr1;
         delete[] arr2;
         delete[] arr3;
         delete[] arr4;
         delete[] arr5;
+        delete[] arr6;
 
         return 0;
     }
