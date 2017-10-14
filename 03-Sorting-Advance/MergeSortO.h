@@ -1,16 +1,20 @@
 //
-// Created by wangyong on 10/11/17.
+// Created by wangyong on 10/14/17.
 //
 
-#ifndef CALGS_MERGESORT_H
-#define CALGS_MERGESORT_H
+#ifndef CALGS_MERGESORTO_H
+#define CALGS_MERGESORTO_H
 
 #include <iostream>
+#include <algorithm>
 #include "../02-Sorting-Basic/InsertionSort.h"
 
+using namespace std;
+
+// 在本章所介绍的优化的归并排序中, merge函数并没有改变
 // 将arr[l...mid]和arr[mid+1...r]两部分进行归并
 template<typename  T>
-void __merge(T arr[], int l, int mid, int r){
+void __mergeO(T arr[], int l, int mid, int r){
 
     //* VS不支持动态长度数组, 即不能使用 T aux[r-l+1]的方式申请aux的空间
     //* 使用VS的同学, 请使用new的方式申请aux空间
@@ -42,24 +46,34 @@ void __merge(T arr[], int l, int mid, int r){
     //delete[] aux;
 }
 
-// 递归使用归并排序,对arr[l...r]的范围进行排序
+// 使用优化的归并排序算法, 对arr[l...r]的范围进行排序
 template<typename T>
-void __mergeSort(T arr[], int l, int r){
+void __mergeSortO(T arr[], int l, int r){
 
-    if( l >= r )
+    // 优化2: 对于小规模数组, 使用插入排序
+    if( r - l <= 15 ){
+        insertionSort(arr, l, r);
         return;
+    }
 
     int mid = (l+r)/2;
-    __mergeSort(arr, l, mid);
-    __mergeSort(arr, mid+1, r);
-    __merge(arr, l, mid, r);
+    __mergeSortO(arr, l, mid);
+    __mergeSortO(arr, mid+1, r);
+
+    // 优化1: 对于arr[mid] <= arr[mid+1]的情况,不进行merge
+    // 对于近乎有序的数组非常有效,但是对于一般情况,有一定的性能损失
+    if( arr[mid] > arr[mid+1] )
+        __mergeO(arr, l, mid, r);
 }
 
-// 未经优化的归并排序算法
+// 优化的归并排序算法
+// 在课程中, 主要向大家介绍了归并排序的两个优化点
+// 关于归并排序的更多优化, 请参考本章节后续的补充内容
 template<typename T>
-void mergeSort(T arr[], int n){
+void mergeSortO(T arr[], int n){
 
-    __mergeSort( arr , 0 , n-1 );
+    __mergeSortO( arr , 0 , n-1 );
 }
 
-#endif //CALGS_MERGESORT_H
+
+#endif //CALGS_MERGESORTO_H

@@ -1,16 +1,19 @@
 //
-// Created by wangyong on 10/11/17.
+// Created by wangyong on 10/14/17.
 //
 
-#ifndef CALGS_MERGESORT_H
-#define CALGS_MERGESORT_H
+#ifndef CALGS_MERGESORTBU_H
+#define CALGS_MERGESORTBU_H
 
 #include <iostream>
-#include "../02-Sorting-Basic/InsertionSort.h"
+#include <algorithm>
 
+using namespace std;
+
+// 自底向上的归并排序中, merge函数并没有改变
 // 将arr[l...mid]和arr[mid+1...r]两部分进行归并
 template<typename  T>
-void __merge(T arr[], int l, int mid, int r){
+void __mergeBU(T arr[], int l, int mid, int r){
 
     //* VS不支持动态长度数组, 即不能使用 T aux[r-l+1]的方式申请aux的空间
     //* 使用VS的同学, 请使用new的方式申请aux空间
@@ -42,24 +45,16 @@ void __merge(T arr[], int l, int mid, int r){
     //delete[] aux;
 }
 
-// 递归使用归并排序,对arr[l...r]的范围进行排序
-template<typename T>
-void __mergeSort(T arr[], int l, int r){
+// 使用自底向上的归并排序算法
+template <typename T>
+void mergeSortBU(T arr[], int n){
 
-    if( l >= r )
-        return;
+    // Merge Sort Bottom Up 无优化版本
+    for( int sz = 1; sz < n ; sz += sz )
+        for( int i = 0 ; i < n - sz ; i += sz+sz )
+            // 对 arr[i...i+sz-1] 和 arr[i+sz...i+2*sz-1] 进行归并
+            __mergeBU(arr, i, i+sz-1, min(i+sz+sz-1,n-1) );
 
-    int mid = (l+r)/2;
-    __mergeSort(arr, l, mid);
-    __mergeSort(arr, mid+1, r);
-    __merge(arr, l, mid, r);
 }
 
-// 未经优化的归并排序算法
-template<typename T>
-void mergeSort(T arr[], int n){
-
-    __mergeSort( arr , 0 , n-1 );
-}
-
-#endif //CALGS_MERGESORT_H
+#endif //CALGS_MERGESORTBU_H
